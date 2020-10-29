@@ -24,11 +24,15 @@ app.post('/getmovie', (req, res) => {
 	
 	console.log(req.body);
 	
+	/*
 	const movieToSearch =
 		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
 			? req.body.result.parameters.movie
 			: '';  
-			
+		*/
+		
+	const movieToSearch =req.body.queryResult.parameters.movie;
+	console.log('movie name come here!');
 	console.log(movieToSearch);	
 
 	const reqUrl = encodeURI(
