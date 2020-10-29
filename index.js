@@ -23,14 +23,13 @@ app.listen(port, () => {
 app.post('/getmovie', (req, res) => {
 	
 	console.log(req.body);
-	/*
+	
 	const movieToSearch =
 		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
 			? req.body.result.parameters.movie
 			: '';  
-			*/
-	console.log(req.body.result.parameters.movie);		
-	const movieToSearch=req.body.result.parameters.movie;	
+			
+	console.log(movieToSearch);	
 
 	const reqUrl = encodeURI(
 		`http://www.omdbapi.com/?t=${movieToSearch}&apikey=${process.env.API_KEY}`
