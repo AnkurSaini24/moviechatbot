@@ -49,11 +49,13 @@ app.post('/',(req, res) => {
 	
 	console.log(req.body.queryResult);
 	
+	/*
 	try {
         logRequests(req.body.queryResult.queryText, req.body.originalDetectIntentRequest.payload.data.event.user, req.body.originalDetectIntentRequest.payload.data.event.ts, intentName, req.body.originalDetectIntentRequest.payload.data.event.channel);
     } catch (logError) {
         console.log("error saving request: " + logError);
     }
+	*/
 	
 	try {
 		  switch (intentName) {
