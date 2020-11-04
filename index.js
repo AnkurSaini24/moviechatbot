@@ -20,6 +20,7 @@ app.listen(port, () => {
 
 /** various function called by the swicth case come here **/
 function addNewIdeaWithName(req, res, next) {
+	console.log('inside Add New Idea With Name');
     var payloadSlack = {
         "payload": {
             "slack": {
@@ -43,11 +44,11 @@ function addNewIdeaWithName(req, res, next) {
 
 
 app.post('/',(req, res,next) => {
-	console.log('post called!');
+	//console.log('post called!');
 	var intentName = req.body.queryResult.intent.displayName;
-	console.log('ideas called');
+	//console.log('ideas called');
 	
-	console.log(req.body.queryResult);
+	console.log(intentName);
 	
 	/*
 	try {
