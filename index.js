@@ -18,15 +18,60 @@ app.listen(port, () => {
 	console.log(`🌏 Server is running at http://localhost:${port}`)
 })
 
+/** various function called by the swicth case come here **/
+function addNewIdeaWithName(req, res, next) {
+    var payloadSlack = {
+        "payload": {
+            "slack": {
+                "text": "Note: Idea has changed...",
+                "attachments": [{
+                    "text": "Idea has been replaced with a slash command and is accessable by typing\n/idea",
+                    "fallback": "Idea has been replaced with a slash command and is accessable by typing\n/idea",
+                    "color": "#3AA3E3",
+                    "attachment_type": "default",
+
+                }]
+            },
+            "outputContexts": [{
+                "name": "projects/${PROJECT_ID}/agt/sessions/${SESSION_ID}/contexts/JIRA-NewIdea"
+            }]
+        }
+    };
+    res.send(payloadSlack);
+}
 
 
 
-app.post('/ideas',(req, res) => {
+app.post('/',(req, res) => {
 	console.log('post called!');
 	var intentName = req.body.queryResult.intent.displayName;
 	console.log('ideas called');
 	
 	console.log(req.body.queryResult);
+	
+	try {
+        logRequests(req.body.queryResult.queryText, req.body.originalDetectIntentRequest.payload.data.event.user, req.body.originalDetectIntentRequest.payload.data.event.ts, intentName, req.body.originalDetectIntentRequest.payload.data.event.channel);
+    } catch (logError) {
+        console.log("error saving request: " + logError);
+    }
+	
+	try {
+		  switch (intentName) {
+		     case "JIRA-NewIdea":
+                // add new JIRA idea to Intake sprint
+                //addNewIdeaWithOutName(req, res, next);
+                addNewIdeaWithName(req, res, next);
+                break;
+			default:
+                logError("Unable to match intent. Received: " + intentName, req.body.originalDetectIntentRequest.payload.data.event.user, 'UNKNOWN', 'IDEA POST CALL');
+
+                res.send("Your request wasn't found and has been logged. Thank you!");
+                break;
+		  }
+	} catch (err) {
+        console.log(err);
+        res.send(err);
+    }
 	
 	
 });
