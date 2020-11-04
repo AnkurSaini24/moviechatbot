@@ -70,4 +70,15 @@ app.post('/getmovie', (req, res) => {
 			})
 		}
 	)
-})
+});
+
+
+app.post('/ideas',(req, res) => {
+	console.log('post called!');
+	var intentName = req.body.queryResult.intent.displayName;
+	console.log('ideas called');
+	
+	console.log(req.body.queryResult);
+	
+	
+});
