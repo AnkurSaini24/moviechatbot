@@ -42,7 +42,7 @@ function addNewIdeaWithName(req, res, next) {
 
 
 
-app.post('/',(req, res) => {
+app.post('/',(req, res,next) => {
 	console.log('post called!');
 	var intentName = req.body.queryResult.intent.displayName;
 	console.log('ideas called');
