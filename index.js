@@ -18,8 +18,23 @@ app.listen(port, () => {
 	console.log(`🌏 Server is running at http://localhost:${port}`)
 })
 
+
+
+
+app.post('/ideas',(req, res) => {
+	console.log('post called!');
+	var intentName = req.body.queryResult.intent.displayName;
+	console.log('ideas called');
+	
+	console.log(req.body.queryResult);
+	
+	
+});
+
+
 /** call to the movie api call to get the movie information **/
 
+/*
 app.post('/getmovie', (req, res) => {
 	
 	console.log(req.body);
@@ -29,7 +44,7 @@ app.post('/getmovie', (req, res) => {
 		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
 			? req.body.result.parameters.movie
 			: '';  
-		*/
+		
 		
 	const movieToSearch =req.body.queryResult.parameters.movie;
 	console.log('movie name come here!');
@@ -71,14 +86,5 @@ app.post('/getmovie', (req, res) => {
 		}
 	)
 });
+*/
 
-
-app.post('/ideas',(req, res) => {
-	console.log('post called!');
-	var intentName = req.body.queryResult.intent.displayName;
-	console.log('ideas called');
-	
-	console.log(req.body.queryResult);
-	
-	
-});
