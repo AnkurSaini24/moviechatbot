@@ -38,7 +38,13 @@ function addNewIdeaWithName(req, res, next) {
             }]
         }
     };
-    res.send(payloadSlack);
+   // res.send(payloadSlack);
+	
+	return res.json({
+					fulfillmentText: payloadSlack,
+					source: 'JIRA'
+				});
+				
 }
 
 
