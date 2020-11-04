@@ -38,13 +38,7 @@ function addNewIdeaWithName(req, res, next) {
             }]
         }
     };
-   // res.send(payloadSlack);
-	
-	return res.json({
-					fulfillmentText: payloadSlack,
-					source: 'JIRA'
-				});
-				
+    res.send(payloadSlack);
 }
 
 
@@ -88,7 +82,7 @@ app.post('/',(req, res,next) => {
 
 /** call to the movie api call to get the movie information **/
 
-/*
+
 app.post('/getmovie', (req, res) => {
 	
 	console.log(req.body);
@@ -97,7 +91,7 @@ app.post('/getmovie', (req, res) => {
 	const movieToSearch =
 		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
 			? req.body.result.parameters.movie
-			: '';  
+			: ''; */ 
 		
 		
 	const movieToSearch =req.body.queryResult.parameters.movie;
@@ -140,5 +134,4 @@ app.post('/getmovie', (req, res) => {
 		}
 	)
 });
-*/
 
