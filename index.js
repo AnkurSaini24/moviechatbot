@@ -19,6 +19,58 @@ app.listen(port, () => {
 })
 
 /** various function called by the swicth case come here **/
+
+function buzzWordHandler(req, res, next) {
+
+ var options = {
+        uri: 'https://corporatebs-generator.sameerkumar.website/',
+        method: 'GET',
+        json: true,
+        headers: {
+            "Accept": "application/json"
+        }
+    };
+	
+	reqUrl='https://corporatebs-generator.sameerkumar.website/';
+	http.get(
+		reqUrl,
+		responseFromAPI => {
+			let completeResponse = ''
+			responseFromAPI.on('data', chunk => {
+				completeResponse += chunk
+			})
+			responseFromAPI.on('end', () => {
+				const result = JSON.parse(completeResponse)
+				
+				console.log(result);
+
+				let dataToSend;
+				dataToSend = 'Cool Corporate Buzz Word: *' + result.phrase + '*';
+				
+				/*
+				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
+					movie.Director
+				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.
+                }`
+				*/
+
+				return res.json({
+					fulfillmentText: dataToSend,
+					source: 'buzzword'
+				})
+			})
+		},
+		error => {
+			return res.json({
+				fulfillmentText: 'Could not get results at this time',
+				source: 'buzzword'
+			})
+		}
+	)
+	
+
+}
+
 function addNewIdeaWithName(req, res, next) {
 	console.log('inside Add New Idea With Name');
     var payloadSlack = {
@@ -67,7 +119,11 @@ app.post('/',(req, res,next) => {
                 break;
     		 case "getmovie":
                 getmovie(req,res,next);
-				break;				  
+				break;
+			case "BuzzWord":
+                // corporate buzz word generator
+                buzzWordHandler(req, res, next);
+                break;				
 			default:
                 logError("Unable to match intent. Received: " + intentName, req.body.originalDetectIntentRequest.payload.data.event.user, 'UNKNOWN', 'IDEA POST CALL');
 
