@@ -28,14 +28,14 @@ function buzzWordHandler(req, res, next) {
 	//console.log(req.body.queryResult.fulfillmentMessages.text.text);
 	console.log(req.body.originalDetectIntentRequest.payload.data);
 	
-	
+/*	
 	const reqUrl1 = encodeURI(
 		`https://corporatebs-generator.sameerkumar.website/`
 	)
 	
-	console.log(reqUrl1);
+	// console.log(reqUrl1);
 	
-	let dataToSend ='Welcome to buzz word!';
+	//let dataToSend ='Welcome to buzz word!';
 	
 	/*
 	
@@ -54,12 +54,15 @@ console.log(response);
 				completeResponse += chunk
 			})
 			responseFromAPI.on('end', () => {
+				
+				console.log(completeResponse);
+				
 				const mymath = JSON.parse(completeResponse)
 				
 				console.log(mymath);
 
 				let dataToSend = movieToSearch
-				dataToSend = `Inside http reponse`
+				dataToSend = `The Question is ${mymath.text}`
 
 				return res.json({
 					fulfillmentText: dataToSend,
@@ -81,13 +84,13 @@ console.log(response);
 	
 	
 	
-
+/*
 return res.json({
 					fulfillmentText: dataToSend,
 					source: 'getmovie'
 				})
     
-
+*/
 /*
 	http.get(
 		reqUrl,
