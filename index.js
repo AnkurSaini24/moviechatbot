@@ -24,20 +24,34 @@ function buzzWordHandler(req, res, next) {
 	
 	console.log('inside buzzword handler function');
 	
+	console.log(req.body.originalDetectIntentRequest.payload.data.event.ts);
+	console.log(req.body.queryResult.fulfillmentMessages);
+	console.log(req.body.originalDetectIntentRequest.payload.data);
 	
 	
-	const reqUrl = encodeURI(
+	const reqUrl1 = encodeURI(
 		`http://corporatebs-generator.sameerkumar.website/`
 	)
 	
-	console.log(reqUrl);
+	console.log(reqUrl1);
 	
 	let dataToSend ='Welcome to buzz word!';
 	
 	
-	http.get(reqUrl,(response)=>{
+	http.get(reqUrl1,(response)=>{
 		
 		console.log(response.phrase);
+		let body = [];
+response.on('data', (chunk) => {
+  body.push(chunk);
+}).on('end', () => {
+  body = Buffer.concat(body).toString();
+  // at this point, `body` has the entire request body stored in it as a string
+});
+
+console.log('body come here!');
+console.log(body);
+
 	});
 	
 
