@@ -37,12 +37,49 @@ function buzzWordHandler(req, res, next) {
 	
 	let dataToSend ='Welcome to buzz word!';
 	
+	/*
 	
 	http.get('http://numbersapi.com/random/math',(response)=>{
 console.log('body come here!');
 console.log(response);
 
 	});
+	*/
+	
+	http.get(
+		'http://numbersapi.com/random/math',
+		responseFromAPI => {
+			let completeResponse = ''
+			responseFromAPI.on('data', chunk => {
+				completeResponse += chunk
+			})
+			responseFromAPI.on('end', () => {
+				const mymath = JSON.parse(completeResponse)
+				
+				console.log(mymath);
+
+				let dataToSend = movieToSearch
+				dataToSend = `Inside http reponse`
+
+				return res.json({
+					fulfillmentText: dataToSend,
+					source: 'getmovie'
+				})
+			})
+		},
+		error => {
+			return res.json({
+				fulfillmentText: 'Could not get results at this time',
+				source: 'getmovie'
+			})
+		}
+	)
+	
+	
+	
+	
+	
+	
 	
 
 return res.json({
