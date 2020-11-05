@@ -35,10 +35,11 @@ function buzzWordHandler(req, res, next) {
 	let dataToSend ='Welcome to buzz word!';
 	
 	
-	http.get(reqUrl,(res)=>{
+	http.get(reqUrl,res =>{
 		
-		//console.log(res);
+		console.log(res.phrase);
 		
+		/*
 	//	res.setEncoding('utf8');
 	  let rawData = '';
 	  res.on('data', (chunk) => { rawData += chunk; });
@@ -50,6 +51,7 @@ function buzzWordHandler(req, res, next) {
 		  console.error(e.message);
 		}			
 	});
+	*/
 	
 	let dataToSend ='Welcome to buzZ Section';
 	
