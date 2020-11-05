@@ -20,7 +20,7 @@ app.listen(port, () => {
 
 /** various function called by the swicth case come here **/
 
-function buzzWordHandler(req, res, next) {
+function mathFactsHandler(req, res, next) {
 	
 	
 	http.get(
@@ -110,7 +110,7 @@ app.post('/',(req, res,next) => {
 			 case "MathFacts":
                 mathFactsHandler(req, res, next);
                 break;
-			case "BuzzWord":
+			 case "BuzzWord":
                 // corporate buzz word generator
                 buzzWordHandler(req, res, next);
                 break;				
