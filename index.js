@@ -24,7 +24,7 @@ app.listen(port, () => {
 function buzzWordHandler(req, res, next) {
 	
 	http.get(
-		'https://corporatebs-generator.sameerkumar.website/',
+		'http://corporatebs-generator.sameerkumar.website/',
 		responseFromAPI => {
 			let completeResponse = ''
 			responseFromAPI.on('data', chunk => {
