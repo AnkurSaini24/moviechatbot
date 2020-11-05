@@ -24,9 +24,15 @@ function buzzWordHandler(req, res, next) {
 	
 	console.log('inside buzzword handler function');
 	console.log(req.body);
-
 	
-	reqUrl='http://corporatebs-generator.sameerkumar.website/';
+	
+	const reqUrl = encodeURI(
+		`http://corporatebs-generator.sameerkumar.website/`
+	)
+	
+	console.log(reqUrl);
+
+
 	http.get(
 		reqUrl,
 		responseFromAPI => {
@@ -35,12 +41,15 @@ function buzzWordHandler(req, res, next) {
 				completeResponse += chunk
 			})
 			responseFromAPI.on('end', () => {
+				
+				console.log(completeResponse);
+				
 				const result = JSON.parse(completeResponse)
 				
 				console.log(result);
 
 				let dataToSend;
-				dataToSend = 'Cool Corporate Buzz Word: *' + result.phrase + '*';
+				dataToSend = `Cool Corporate Buzz Word: * ${result.phrase}'*'`
 				
 				/*
 				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
@@ -48,6 +57,7 @@ function buzzWordHandler(req, res, next) {
 				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.
                 }`
 				*/
+				
 
 				return res.json({
 					fulfillmentText: dataToSend,
