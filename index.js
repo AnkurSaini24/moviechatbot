@@ -37,21 +37,21 @@ function buzzWordHandler(req, res, next) {
 				
 				//const mymath = JSON.parse(completeResponse.text);
 				
-				const mymath = completeResponse;
+				const msg = completeResponse;
 
 				let dataToSend ;
-				dataToSend = `Cool Corporate Buzz Word: ${mymath}`
+				dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
 
 				return res.json({
 					fulfillmentText: dataToSend,
-					source: 'getmovie'
+					source: 'BuzzWord'
 				})
 			})
 		},
 		error => {
 			return res.json({
 				fulfillmentText: 'Could not get results at this time',
-				source: 'getmovie'
+				source: 'BuzzWord'
 			})
 		}
 	)
