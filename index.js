@@ -23,7 +23,7 @@ app.listen(port, () => {
 function buzzWordHandler(req, res, next) {
 	
 	console.log('inside buzzword handler function');
-	console.log(req.body);
+	
 	
 	
 	const reqUrl = encodeURI(
@@ -31,8 +31,16 @@ function buzzWordHandler(req, res, next) {
 	)
 	
 	console.log(reqUrl);
+	
+	let dataToSend ='Welcome to buzz word!';
 
+return res.json({
+					fulfillmentText: dataToSend,
+					source: 'getmovie'
+				})
+    
 
+/*
 	http.get(
 		reqUrl,
 		responseFromAPI => {
@@ -43,7 +51,20 @@ function buzzWordHandler(req, res, next) {
 			responseFromAPI.on('end', () => {
 				
 				console.log('response come here!');
-				console.log(completeResponse);			
+				console.log(completeResponse);		
+				
+				let dataToSend = movieToSearch
+				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
+					movie.Director
+				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.
+                }`
+
+				return res.json({
+					fulfillmentText: dataToSend,
+					source: 'getmovie'
+				})
+
+				
 			
 			})
 		},
@@ -55,6 +76,7 @@ function buzzWordHandler(req, res, next) {
 		}
 	)
 	
+	*/
 
 }
 
