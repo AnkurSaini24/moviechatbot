@@ -39,7 +39,7 @@ function buzzWordHandler(req, res, next) {
 		
 		//console.log(res);
 		
-		res.setEncoding('utf8');
+	//	res.setEncoding('utf8');
 	  let rawData = '';
 	  res.on('data', (chunk) => { rawData += chunk; });
 	  res.on('end', () => {
@@ -50,6 +50,8 @@ function buzzWordHandler(req, res, next) {
 		  console.error(e.message);
 		}			
 	});
+	
+	let dataToSend ='Welcome to buzZ Section';
 	
 
 return res.json({
