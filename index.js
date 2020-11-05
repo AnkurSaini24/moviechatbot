@@ -42,27 +42,9 @@ function buzzWordHandler(req, res, next) {
 			})
 			responseFromAPI.on('end', () => {
 				
-				console.log(completeResponse);
-				
-				const result = JSON.parse(completeResponse)
-				
-				console.log(result);
-
-				let dataToSend;
-				dataToSend = `Cool Corporate Buzz Word: * ${result.phrase}'*'`
-				
-				/*
-				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
-					movie.Director
-				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.
-                }`
-				*/
-				
-
-				return res.json({
-					fulfillmentText: dataToSend,
-					source: 'buzzword'
-				})
+				console.log('response come here!');
+				console.log(completeResponse);			
+			
 			})
 		},
 		error => {
