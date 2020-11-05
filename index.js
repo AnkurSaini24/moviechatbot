@@ -20,31 +20,7 @@ app.listen(port, () => {
 
 /** various function called by the swicth case come here **/
 
-function buzzWordHandler(req, res, next) {
-	
-	console.log('inside buzzword handler function');
-	
-	console.log(req.body.originalDetectIntentRequest.payload.data.event.ts);
-	//console.log(req.body.queryResult.fulfillmentMessages.text.text);
-	console.log(req.body.originalDetectIntentRequest.payload.data);
-	
-/*	
-	const reqUrl1 = encodeURI(
-		`https://corporatebs-generator.sameerkumar.website/`
-	)
-	
-	// console.log(reqUrl1);
-	
-	//let dataToSend ='Welcome to buzz word!';
-	
-	/*
-	
-	http.get('http://numbersapi.com/random/math',(response)=>{
-console.log('body come here!');
-console.log(response);
-
-	});
-	*/
+function mathFactsHandler(req, res, next) {	
 	
 	http.get(
 		'http://numbersapi.com/random/math',
@@ -66,69 +42,18 @@ console.log(response);
 
 				return res.json({
 					fulfillmentText: dataToSend,
-					source: 'getmovie'
+					source: 'MathFacts'
 				})
 			})
 		},
 		error => {
 			return res.json({
 				fulfillmentText: 'Could not get results at this time',
-				source: 'getmovie'
+				source: 'MathFacts'
 			})
 		}
 	)
 	
-	
-	
-	
-	
-	
-	
-/*
-return res.json({
-					fulfillmentText: dataToSend,
-					source: 'getmovie'
-				})
-    
-*/
-/*
-	http.get(
-		reqUrl,
-		responseFromAPI => {
-			let completeResponse = ''
-			responseFromAPI.on('data', chunk => {
-				completeResponse += chunk
-			})
-			responseFromAPI.on('end', () => {
-				
-				console.log('response come here!');
-				console.log(completeResponse);		
-				
-				let dataToSend = movieToSearch
-				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
-					movie.Director
-				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.
-                }`
-
-				return res.json({
-					fulfillmentText: dataToSend,
-					source: 'getmovie'
-				})
-
-				
-			
-			})
-		},
-		error => {
-			return res.json({
-				fulfillmentText: 'Could not get results at this time',
-				source: 'buzzword'
-			})
-		}
-	)
-	
-	*/
-
 }
 
 function addNewIdeaWithName(req, res, next) {
@@ -181,6 +106,9 @@ app.post('/',(req, res,next) => {
     		 case "getmovie":
                 getmovie(req,res,next);
 				break;
+			 case "MathFacts":
+                mathFactsHandler(req, res, next);
+                break;
 			case "BuzzWord":
                 // corporate buzz word generator
                 buzzWordHandler(req, res, next);
