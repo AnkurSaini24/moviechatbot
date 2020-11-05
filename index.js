@@ -56,7 +56,7 @@ return res.json({
 					fulfillmentText: dataToSend,
 					source: 'getmovie'
 				})
-    
+    }
 
 /*
 	http.get(
