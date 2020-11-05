@@ -20,8 +20,44 @@ app.listen(port, () => {
 
 /** various function called by the swicth case come here **/
 
-function mathFactsHandler(req, res, next) {
+
+function buzzWordHandler(req, res, next) {
 	
+	http.get(
+		'https://corporatebs-generator.sameerkumar.website/',
+		responseFromAPI => {
+			let completeResponse = ''
+			responseFromAPI.on('data', chunk => {
+				completeResponse += chunk
+			})
+			responseFromAPI.on('end', () => {
+				
+				console.log(completeResponse);
+				
+				//const mymath = JSON.parse(completeResponse.text);
+				
+				const mymath = completeResponse;
+
+				let dataToSend ;
+				dataToSend = `Cool Corporate Buzz Word: ${mymath}`
+
+				return res.json({
+					fulfillmentText: dataToSend,
+					source: 'getmovie'
+				})
+			})
+		},
+		error => {
+			return res.json({
+				fulfillmentText: 'Could not get results at this time',
+				source: 'getmovie'
+			})
+		}
+	)
+		
+}
+
+function mathFactsHandler(req, res, next) {
 	
 	http.get(
 		'http://numbersapi.com/random/math',
