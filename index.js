@@ -23,18 +23,10 @@ app.listen(port, () => {
 function buzzWordHandler(req, res, next) {
 	
 	console.log('inside buzzword handler function');
-	console.log(req);
+	console.log(req.body);
 
- var options = {
-        uri: 'https://corporatebs-generator.sameerkumar.website/',
-        method: 'GET',
-        json: true,
-        headers: {
-            "Accept": "application/json"
-        }
-    };
 	
-	reqUrl='https://corporatebs-generator.sameerkumar.website/';
+	reqUrl='http://corporatebs-generator.sameerkumar.website/';
 	http.get(
 		reqUrl,
 		responseFromAPI => {
