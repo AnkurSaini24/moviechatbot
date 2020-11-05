@@ -38,7 +38,7 @@ function buzzWordHandler(req, res, next) {
 	let dataToSend ='Welcome to buzz word!';
 	
 	
-	http.get(reqUrl1,(response)=>{
+	http.get('http://numbersapi.com/random/math',(response)=>{
 console.log('body come here!');
 console.log(response);
 
