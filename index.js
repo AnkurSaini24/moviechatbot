@@ -56,9 +56,9 @@ function buzzWordHandler(req, res, next) {
 
 return res.json({
 					fulfillmentText: dataToSend,
-					source: 'getmovie'
+					source: 'buzzword'
 				})
-    }
+    })
 
 /*
 	http.get(
