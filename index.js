@@ -21,6 +21,9 @@ app.listen(port, () => {
 /** various function called by the swicth case come here **/
 
 function buzzWordHandler(req, res, next) {
+	
+	console.log('inside buzzword handler function');
+	console.log(req);
 
  var options = {
         uri: 'https://corporatebs-generator.sameerkumar.website/',
