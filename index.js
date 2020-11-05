@@ -1,6 +1,7 @@
 const express = require('express')
 // will use this later to send requests
 const http = require('http')
+const https = require('https')
 // import env variables
 require('dotenv').config()
 
@@ -23,8 +24,8 @@ app.listen(port, () => {
 
 function buzzWordHandler(req, res, next) {
 	
-	http.get(
-		'http://corporatebs-generator.sameerkumar.website/',
+	https.get(
+		'https://corporatebs-generator.sameerkumar.website/',
 		responseFromAPI => {
 			let completeResponse = ''
 			responseFromAPI.on('data', chunk => {
