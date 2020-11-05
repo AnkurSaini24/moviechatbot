@@ -101,6 +101,7 @@ app.post('/',(req, res,next) => {
 	//console.log('ideas called');
 	
 	console.log(intentName);
+	console.log(req.body);
 	
 	/*
 	try {
