@@ -35,32 +35,17 @@ function buzzWordHandler(req, res, next) {
 	let dataToSend ='Welcome to buzz word!';
 	
 	
-	http.get(reqUrl,res =>{
+	http.get(reqUrl,(response)=>{
 		
-		console.log(res.phrase);
-		
-		/*
-	//	res.setEncoding('utf8');
-	  let rawData = '';
-	  res.on('data', (chunk) => { rawData += chunk; });
-	  res.on('end', () => {
-		try {
-		  const parsedData = JSON.parse(rawData);
-		  console.log(parsedData);
-		} catch (e) {
-		  console.error(e.message);
-		}			
+		console.log(response.phrase);
 	});
-	*/
-	
-	let dataToSend ='Welcome to buzZ Section';
 	
 
 return res.json({
 					fulfillmentText: dataToSend,
-					source: 'buzzword'
+					source: 'getmovie'
 				})
-    })
+    
 
 /*
 	http.get(
