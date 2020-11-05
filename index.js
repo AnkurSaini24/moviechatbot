@@ -33,6 +33,14 @@ function buzzWordHandler(req, res, next) {
 	console.log(reqUrl);
 	
 	let dataToSend ='Welcome to buzz word!';
+	
+	
+	http.get(reqUrl,(res)=>{
+		
+		console.log(res);
+		
+	});
+	
 
 return res.json({
 					fulfillmentText: dataToSend,
