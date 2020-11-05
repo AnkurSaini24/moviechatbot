@@ -55,9 +55,9 @@ console.log(response);
 			})
 			responseFromAPI.on('end', () => {
 				
-				console.log(completeResponse);
+				console.log(completeResponse.text);
 				
-				const mymath = JSON.parse(completeResponse)
+				const mymath = JSON.parse(completeResponse.text);
 				
 				console.log(mymath);
 
