@@ -20,7 +20,8 @@ app.listen(port, () => {
 
 /** various function called by the swicth case come here **/
 
-function mathFactsHandler(req, res, next) {	
+function buzzWordHandler(req, res, next) {
+	
 	
 	http.get(
 		'http://numbersapi.com/random/math',
@@ -42,18 +43,18 @@ function mathFactsHandler(req, res, next) {
 
 				return res.json({
 					fulfillmentText: dataToSend,
-					source: 'MathFacts'
+					source: 'getmovie'
 				})
 			})
 		},
 		error => {
 			return res.json({
 				fulfillmentText: 'Could not get results at this time',
-				source: 'MathFacts'
+				source: 'getmovie'
 			})
 		}
 	)
-	
+		
 }
 
 function addNewIdeaWithName(req, res, next) {
