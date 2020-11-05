@@ -61,7 +61,7 @@ console.log(response);
 				
 				const mymath = completeResponse;
 
-				let dataToSend = movieToSearch
+				let dataToSend ;
 				dataToSend = `The Question is ${mymath}`
 
 				return res.json({
