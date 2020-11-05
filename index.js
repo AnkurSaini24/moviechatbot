@@ -37,7 +37,7 @@ function buzzWordHandler(req, res, next) {
 				
 				//const mymath = JSON.parse(completeResponse.text);
 				
-				const msg = completeResponse;
+				const msg = JSON.Parse(completeResponse);
 
 				let dataToSend ;
 				dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
