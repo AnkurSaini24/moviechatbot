@@ -25,7 +25,7 @@ function buzzWordHandler(req, res, next) {
 	console.log('inside buzzword handler function');
 	
 	console.log(req.body.originalDetectIntentRequest.payload.data.event.ts);
-	console.log(req.body.queryResult.fulfillmentMessages.text.text);
+	//console.log(req.body.queryResult.fulfillmentMessages.text.text);
 	console.log(req.body.originalDetectIntentRequest.payload.data);
 	
 	
