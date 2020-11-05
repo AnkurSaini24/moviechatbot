@@ -55,14 +55,14 @@ console.log(response);
 			})
 			responseFromAPI.on('end', () => {
 				
-				console.log(completeResponse.text);
+				console.log(completeResponse);
 				
-				const mymath = JSON.parse(completeResponse.text);
+				//const mymath = JSON.parse(completeResponse.text);
 				
-				console.log(mymath);
+				const mymath = completeResponse;
 
 				let dataToSend = movieToSearch
-				dataToSend = `The Question is ${mymath.text}`
+				dataToSend = `The Question is ${mymath}`
 
 				return res.json({
 					fulfillmentText: dataToSend,
