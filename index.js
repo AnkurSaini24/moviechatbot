@@ -37,8 +37,18 @@ function buzzWordHandler(req, res, next) {
 	
 	http.get(reqUrl,(res)=>{
 		
-		console.log(res);
+		//console.log(res);
 		
+		res.setEncoding('utf8');
+	  let rawData = '';
+	  res.on('data', (chunk) => { rawData += chunk; });
+	  res.on('end', () => {
+		try {
+		  const parsedData = JSON.parse(rawData);
+		  console.log(parsedData);
+		} catch (e) {
+		  console.error(e.message);
+		}			
 	});
 	
 
