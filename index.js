@@ -80,19 +80,56 @@ function mathFactsHandler(req, res, next) {
 
 				return res.json({
 					fulfillmentText: dataToSend,
-					source: 'getmovie'
+					source: 'MathFacts'
 				})
 			})
 		},
 		error => {
 			return res.json({
 				fulfillmentText: 'Could not get results at this time',
-				source: 'getmovie'
+				source: 'MathFacts'
 			})
 		}
 	)
 		
 }
+
+function joke2Handler(req, res, next) {
+	/*
+    var options = {
+        uri: 'https://geek-jokes.sameerkumar.website/api',
+        method: 'GET',
+        json: true
+    };
+	*/
+	
+	https.get('https://geek-jokes.sameerkumar.website/api',responseFromAPI => {
+			let completeResponse = ''
+			responseFromAPI.on('data', chunk => {
+				completeResponse += chunk
+			})
+			responseFromAPI.on('end', () => {
+				
+				console.log(completeResponse);				
+				
+				let dataToSend ;
+				dataToSend = `${completeResponse}`
+
+				return res.json({
+					fulfillmentText: dataToSend,
+					source: 'J2'
+				})
+			})
+		},
+		error => {
+			return res.json({
+				fulfillmentText: 'Could not get results at this time',
+				source: 'J2'
+			})
+		}	
+	)
+	
+}	
 
 function addNewIdeaWithName(req, res, next) {
 	console.log('inside Add New Idea With Name');
@@ -150,6 +187,9 @@ app.post('/',(req, res,next) => {
 			 case "BuzzWord":
                 // corporate buzz word generator
                 buzzWordHandler(req, res, next);
+                break;		
+             case "J2":
+                joke2Handler(req, res, next);
                 break;				
 			default:
                 logError("Unable to match intent. Received: " + intentName, req.body.originalDetectIntentRequest.payload.data.event.user, 'UNKNOWN', 'IDEA POST CALL');
