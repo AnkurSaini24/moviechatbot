@@ -113,7 +113,7 @@ function joke2Handler(req, res, next) {
 				console.log(completeResponse);				
 				
 				let dataToSend ;
-				dataToSend = `${completeResponse}`
+				dataToSend = `Information Technology Joke: ${completeResponse}`
 
 				return res.json({
 					fulfillmentText: dataToSend,
