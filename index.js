@@ -36,15 +36,20 @@ function buzzWordHandler(req, res, next) {
 				console.log(completeResponse);
 				
 				//const mymath = JSON.parse(completeResponse.text);
-				
+				response_type: 'in_channel', 
 				const msg = JSON.parse(completeResponse);
 				
 				
+				const message = {
+					response_type: 'in_channel',
+					text: msg.phrase,
+				}; 
+				return res.json(message);
 				
-				
+				/*
 				var dataToSend ;
 				dataToSend = {
-					'blocks': [
+					blocks: [
 						{
 							'type': 'context',
 							'elements': [
@@ -61,11 +66,14 @@ function buzzWordHandler(req, res, next) {
 						}
 					]
 				};
+				
+				
+				
 
                 console.log(dataToSend);
 				//let dataToSend ;
 				//dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
-
+/*
                return res.send({
 					fulfillmentText: dataToSend,
 					source: 'BuzzWord'
