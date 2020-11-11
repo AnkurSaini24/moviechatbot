@@ -36,54 +36,16 @@ function buzzWordHandler(req, res, next) {
 				console.log(completeResponse);
 				
 				//const mymath = JSON.parse(completeResponse.text);
-				//response_type: 'in_channel', 
+				
 				const msg = JSON.parse(completeResponse);
-				
-				
-				const message = {
-					response_type: 'in_channel',
-					fulfillmentText: 'ankur',
-				}; 
-				return res.json(message);
-				
-				/*
-				var dataToSend ;
-				dataToSend = {
-					blocks: [
-						{
-							'type': 'context',
-							'elements': [
-								{
-									'type': 'image',
-									'image_url': 'https://image.freepik.com/free-photo/red-drawing-pin_1156-445.jpg',
-									'alt_text': "images"
-								},
-								{
-									'type': 'mrkdwn',
-									'text': 'Location: *Dogpatch*'
-								}
-							]
-						}
-					]
-				};
-				
-				
-				
 
-                console.log(dataToSend);
-				//let dataToSend ;
-				//dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
-/*
-               return res.send({
-					fulfillmentText: dataToSend,
-					source: 'BuzzWord'
-				});
-                /*
+				let dataToSend ;
+				dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
+
 				return res.json({
 					fulfillmentText: dataToSend,
 					source: 'BuzzWord'
 				})
-				*/
 			})
 		},
 		error => {
