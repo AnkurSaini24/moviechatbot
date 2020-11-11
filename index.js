@@ -2,7 +2,7 @@ const express = require('express')
 // will use this later to send requests
 const http = require('http')
 const https = require('https')
-const request = require('request');
+const axios = require('axios');
 // import env variables
 require('dotenv').config()
 
@@ -43,18 +43,21 @@ function buzzWordHandler(req, res, next) {
 				let dataToSend ;
 				dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
 				
-				//sending data to slack using the webhook url 				
-				
+				//sending data to slack using the webhook url 
 
-				request.post('https://api.slack.com/apps/A01ECJVP12L/incoming-webhooks',
-					{ json: { "text": 'Hello , World!' } },
-					function (error, response, body) {
-						if (!error && response.statusCode == 200) {
-							console.log(body);
-						}
-					}
-				);
-								
+					const data = {
+						"text": 'John Doe'						
+					};	
+
+
+				axios.post('https://api.slack.com/apps/A01ECJVP12L/incoming-webhooks', data)
+					.then((res) => {
+						console.log(`Status: ${res.status}`);
+						console.log('Body: ', res.data);
+					}).catch((err) => {
+						console.error(err);
+					});					
+												
 				
 
 				return res.json({
