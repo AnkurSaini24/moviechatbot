@@ -40,7 +40,7 @@ function buzzWordHandler(req, res, next) {
 				const msg = JSON.parse(completeResponse);
 				
 				var dataToSend ;
-				dataToSend = "{
+				dataToSend = {
 					'blocks': [
 						{
 							'type': 'context',
@@ -57,8 +57,9 @@ function buzzWordHandler(req, res, next) {
 							]
 						}
 					]
-				}";
+				};
 
+                console.log(dataToSend);
 				//let dataToSend ;
 				//dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
 
