@@ -42,7 +42,7 @@ function buzzWordHandler(req, res, next) {
 				
 				const message = {
 					response_type: 'in_channel',
-					text: msg.phrase,
+					text: 'ankur',
 				}; 
 				return res.json(message);
 				
