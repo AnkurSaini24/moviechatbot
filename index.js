@@ -2,6 +2,7 @@ const express = require('express')
 // will use this later to send requests
 const http = require('http')
 const https = require('https')
+
 // import env variables
 require('dotenv').config()
 
@@ -59,12 +60,10 @@ function buzzWordHandler(req, res, next) {
 					json: true
 
 				};
-				return rp(options)
-					.then(results => {
-						if (isLastCall) {
-							res.send("sent message to user").end();
-						}
-					});  
+				return res.json({
+					fulfillmentText: "gellop",
+					source: 'BuzzWord'
+				}) 
 
 
 
