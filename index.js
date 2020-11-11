@@ -38,9 +38,29 @@ function buzzWordHandler(req, res, next) {
 				//const mymath = JSON.parse(completeResponse.text);
 				
 				const msg = JSON.parse(completeResponse);
-
+				
 				let dataToSend ;
-				dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
+				dataToSend ='{
+					"blocks": [
+						{
+							"type": "context",
+							"elements": [
+								{
+									"type": "image",
+									"image_url": "https://image.freepik.com/free-photo/red-drawing-pin_1156-445.jpg",
+									"alt_text": "images"
+								},
+								{
+									"type": "mrkdwn",
+									"text": "Location: *Dogpatch*"
+								}
+							]
+						}
+					]
+				}';
+
+				//let dataToSend ;
+				//dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
 
 				return res.json({
 					fulfillmentText: dataToSend,
