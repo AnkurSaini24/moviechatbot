@@ -39,6 +39,9 @@ function buzzWordHandler(req, res, next) {
 				
 				const msg = JSON.parse(completeResponse);
 				
+				
+				
+				
 				var dataToSend ;
 				dataToSend = {
 					'blocks': [
@@ -63,7 +66,10 @@ function buzzWordHandler(req, res, next) {
 				//let dataToSend ;
 				//dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
 
-               return dataToSend;
+               return res.send({
+					fulfillmentText: dataToSend,
+					source: 'BuzzWord'
+				});
                 /*
 				return res.json({
 					fulfillmentText: dataToSend,
