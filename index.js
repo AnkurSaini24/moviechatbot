@@ -2,7 +2,6 @@ const express = require('express')
 // will use this later to send requests
 const http = require('http')
 const https = require('https')
-
 // import env variables
 require('dotenv').config()
 
@@ -43,39 +42,17 @@ function buzzWordHandler(req, res, next) {
 				let dataToSend ;
 				dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
 				
-				//sending data to slack using the webhook url 
-
-											
-						
-                    var options = {
-					method: 'POST',
-					url: 'https://api.slack.com/apps/A01ECJVP12L/incoming-webhooks',
-					headers: {
-						Accept: 'application/json',
-						"Content-Type": "application/json; charset=utf-8",						
-					},
-					body: {						
-						text: "Hello WOrld!"						
-					},
-					json: true
-
-				};
-				return res.json({
-					fulfillmentText: "gellop",
-					source: 'BuzzWord'
-				}) 
-
-
-
-
-						
 				
-/*
+				
+				
+				
+				
+				
+
 				return res.json({
 					fulfillmentText: dataToSend,
 					source: 'BuzzWord'
 				})
-				*/
 			})
 		},
 		error => {
