@@ -45,10 +45,7 @@ function buzzWordHandler(req, res, next) {
 				
 				//sending data to slack using the webhook url 
 
-					const data = {
-						"text": 'John Doe'						
-					};	
-
+					
 
 				axios.post('https://api.slack.com/apps/A01ECJVP12L/incoming-webhooks', data)
 					.then((res) => {
@@ -59,11 +56,12 @@ function buzzWordHandler(req, res, next) {
 					});					
 												
 				
-
+/*
 				return res.json({
 					fulfillmentText: dataToSend,
 					source: 'BuzzWord'
 				})
+				*/
 			})
 		},
 		error => {
