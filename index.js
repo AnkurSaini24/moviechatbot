@@ -63,10 +63,13 @@ function buzzWordHandler(req, res, next) {
 				//let dataToSend ;
 				//dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
 
+               return dataToSend;
+                /*
 				return res.json({
 					fulfillmentText: dataToSend,
 					source: 'BuzzWord'
 				})
+				*/
 			})
 		},
 		error => {
