@@ -39,25 +39,25 @@ function buzzWordHandler(req, res, next) {
 				
 				const msg = JSON.parse(completeResponse);
 				
-				let dataToSend ;
-				dataToSend ='{
-					"blocks": [
+				var dataToSend ;
+				dataToSend = "{
+					'blocks': [
 						{
-							"type": "context",
-							"elements": [
+							'type': 'context',
+							'elements': [
 								{
-									"type": "image",
-									"image_url": "https://image.freepik.com/free-photo/red-drawing-pin_1156-445.jpg",
-									"alt_text": "images"
+									'type': 'image',
+									'image_url': 'https://image.freepik.com/free-photo/red-drawing-pin_1156-445.jpg',
+									'alt_text': "images"
 								},
 								{
-									"type": "mrkdwn",
-									"text": "Location: *Dogpatch*"
+									'type': 'mrkdwn',
+									'text': 'Location: *Dogpatch*'
 								}
 							]
 						}
 					]
-				}';
+				}";
 
 				//let dataToSend ;
 				//dataToSend = `Cool Corporate Buzz Word: ${msg.phrase}`
