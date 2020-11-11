@@ -36,7 +36,7 @@ function buzzWordHandler(req, res, next) {
 				console.log(completeResponse);
 				
 				//const mymath = JSON.parse(completeResponse.text);
-				response_type: 'in_channel', 
+				//response_type: 'in_channel', 
 				const msg = JSON.parse(completeResponse);
 				
 				
