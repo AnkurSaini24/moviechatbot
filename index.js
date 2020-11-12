@@ -181,18 +181,18 @@ app.post('/',(req, res,next) => {
 	
 	try {
 		  switch (intentName) {
-		     case "JIRA-NewIdea":
+  	    case "JIRA-NewIdea":
                 // add new JIRA idea to Intake sprint
                 //addNewIdeaWithOutName(req, res, next);
                 addNewIdeaWithName(req, res, next);
                 break;
-    		 case "getmovie":
+    	    case "getmovie":
                 getmovie(req,res,next);
-				break;
-			 case "MathFacts":
+		break;
+	    case "MathFacts":
                 mathFactsHandler(req, res, next);
                 break;
-			 case "BuzzWord":
+	    case "BuzzWord":
                 // corporate buzz word generator
                 buzzWordHandler(req, res, next);
                 break;		
