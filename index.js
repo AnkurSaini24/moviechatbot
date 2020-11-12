@@ -167,6 +167,7 @@ app.post('/',(req, res,next) => {
 	var intentName = req.body.queryResult.intent.displayName;
 	//console.log('ideas called');
 	
+	console.log('ankur');
 	console.log(intentName);
 	console.log(req.body);
 	
